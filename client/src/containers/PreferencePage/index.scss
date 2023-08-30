@@ -1,0 +1,50 @@
+.preference-page {
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: calc(100vh - 100px);
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    .header {
+        font-size: 50px;
+        font-weight: bolder;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .subtext {
+        margin: 2rem auto 2rem;
+        width: 65%;
+        text-align: center;
+        color: rgb(28 28 28 / 75%);
+        font-weight: 500;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .genres-list-container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 60%;
+        margin: 2rem auto 3rem;
+        justify-content: center;
+
+        .genre-widget {
+            margin: 5px;
+            padding: 15px 5px;
+            font-size: 25px;
+            // color: rgb(79 70 229);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 300;
+            cursor: pointer;
+            &:nth-child(2n + 2) {
+                font-size: 35px;
+                padding: 1px 6px;
+            }
+            &:hover{
+                font-weight: 500;
+            }
+            &.selected{
+                text-shadow: 1px 1px 3px rgba(100,0,0,0.9);
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+@import './HomePage/index.scss';
+@import './LoginPage/index.scss';
+@import './PreferencePage/index.scss';
+@import './RecommendationPage/index.scss';
+@import './MovieDetailsPage/index.scss';
+
+.popular-movies {
+    margin: 1rem 0;
+    .header {
+        padding: 1rem;
+        text-align: left;
+        font-weight: 300;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 35px;
+        span{
+            font-weight: 500;    
+        }
+    }
+
+    .popular-movies-container {
+        display: flex;
+        margin: auto;
+        gap: 1px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        .popular-movie-widget-container {
+            height: 350px;
+            min-width: 250px;
+            cursor: pointer;
+            .popular-movie-widget {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+                -webkit-transition: all .5s;
+                -moz-transition: all .5s;
+                -o-transition: all .5s;
+                transition: all .5s;
+                position: relative;
+                .movie-title{
+                    color: #ffffff;
+                    text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+                    font-weight: 500;
+                    position: absolute;
+                    bottom: -30px;
+                    width: 100%;
+                    font-size: 20px;
+                    padding: 5px 0;
+                    visibility: hidden; /* Hide the title by default */
+                    opacity: 0; /* Hide the title by default */
+                    transition: opacity 0.5s, transform 0.5s; /* Add transition for opacity and position */
+                }
+            }
+        }
+    }
+}
+
+.popular-movie-widget-container:hover .popular-movie-widget, .popular-movie-widget-container:focus .popular-movie-widget {
+-ms-transform: scale(1.03);
+-moz-transform: scale(1.03);
+-webkit-transform: scale(1.03);
+-o-transform: scale(1.03);
+transform: scale(1.03);
+background-color: rgba(0,0,0,0.7);
+background-blend-mode: soft-light;
+.movie-title {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(-30px) !important;
+  }
+
+}
