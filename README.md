@@ -11,8 +11,6 @@ Welcome to the FlickFinder repository! This repository contains the code and doc
 - [Usage](#usage)
 - [Backend](#backend)
 - [Frontend](#frontend)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -88,10 +86,3 @@ The backend of the project is developed using Flask, a lightweight Python web fr
 
 The frontend is built using React with TypeScript, providing a dynamic and responsive user interface. Users can select genres, search for movies, and receive real-time recommendations. The frontend interacts with the backend through API requests, ensuring a seamless flow of data between the user interface and recommendation algorithms.
 
-## Contributing
-
-We welcome contributions from the community! If you find any issues or have suggestions for improvements, feel free to submit a pull request. Please ensure that you follow best practices for coding, testing, and documentation.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
