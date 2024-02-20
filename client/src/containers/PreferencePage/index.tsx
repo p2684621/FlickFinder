@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Genre {
   id: number;
@@ -10,6 +10,7 @@ interface Genre {
 }
 
 function PreferencePage() {
+  const navigate = useNavigate()
   const initialGenres: Genre[] = [
     { "id": 0, "name": "Adventure", "icon": "", "selected": false },
     { "id": 1, "name": "TV Movie", "icon": "", "selected": false },
@@ -36,12 +37,34 @@ function PreferencePage() {
   const [genres, setGenres] = useState<Genre[]>(initialGenres);
   const [selectedGenres, setSelectedGenres] = useState<any[]>([]);
 
+  // useEffect(() => {
+  //   const storedSelectedGenres = localStorage.getItem('selectedGenres');
+  //   if (storedSelectedGenres) {
+  //     // Update genre selection status in movies_genres
+  //     const updatedGenres = genres.map((genre) => ({
+  //       ...genre,
+  //       selected: JSON.parse(storedSelectedGenres).includes(genre.name),
+  //     }));
+  //     setGenres(updatedGenres);
+  //     setSelectedGenres(JSON.parse(storedSelectedGenres));
+  //   }
+  // }, []);
+
   useEffect(() => {
     const storedSelectedGenres = localStorage.getItem('selectedGenres');
     if (storedSelectedGenres) {
-      setSelectedGenres(JSON.parse(storedSelectedGenres));
+      const selectedGenresArray = JSON.parse(storedSelectedGenres);
+      // setSelectedGenres(selectedGenresArray);
+
+      // Update genre selection status in genres
+      const updatedGenres = genres.map((genre) => ({
+        ...genre,
+        selected: selectedGenresArray.includes(genre.id),
+      }));
+
+      setGenres(updatedGenres);
     }
-  }, []);
+  }, []); 
 
   const handleGenreSelect = (genreId: number) => {
     const selectedGenre = genres.find((genre) => genre.id === genreId);
@@ -52,29 +75,26 @@ function PreferencePage() {
       );
   
       setGenres(updatedGenres);
-      console.log({selectedGenre})
       if (selectedGenre.selected) {
         setSelectedGenres(selectedGenres.filter((genre) => genre.id !== selectedGenre.id));
       } else {
-        // Check if the selected genre count is already 3
-        if (selectedGenres.length >= 3) {
-          // Remove the oldest selected genre and add the new selected genre
-          setSelectedGenres((prevSelectedGenres) => {
-            const newSelectedGenres = [...prevSelectedGenres];
-            newSelectedGenres.shift();
-            newSelectedGenres.push(selectedGenre);
-            return newSelectedGenres;
-          });
-        } else {
-          setSelectedGenres([...selectedGenres, selectedGenre]);
-        }
+        setSelectedGenres([...selectedGenres, selectedGenre]);
       }
     }
   };
-  
-  useEffect(() =>{
-    localStorage.setItem('selectedGenres', JSON.stringify(selectedGenres));
-  },[selectedGenres])
+
+  useEffect(() => {
+    // console.log(first)
+    if(selectedGenres.length > 0){
+      localStorage.setItem('selectedGenres', JSON.stringify(selectedGenres));
+    }else{
+      localStorage.setItem('selectedGenres', JSON.stringify([]));
+    }
+  }, [selectedGenres])
+
+  const onContinueClick = () => {
+    navigate('/recommendation')
+  }
 
   return (
     <>
@@ -94,9 +114,9 @@ function PreferencePage() {
           ))}
         </div>
         <div className="footer">
-          <Link to="/recommendation">
-            <button className="button-primary">Continue</button>
-          </Link>
+            <button onClick={onContinueClick} className={selectedGenres.length > 0 ? "button-primary" : "button-primary disabled"}>Continue</button>
+          {/* <Link to="/recommendation">
+          </Link> */}
         </div>
       </div>
     </>

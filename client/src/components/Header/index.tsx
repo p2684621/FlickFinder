@@ -7,7 +7,7 @@ function Header() {
         <h1 className="title">FLICK FINDER</h1>
       </Link>
       <Link to={'/preference'}>
-        <p className="user-profile">Change Selected Genres</p>
+        <p className="user-profile">Change Genre Preference</p>
       </Link>
       {/* <div className="user-profile">User</div> */}
     </div>
