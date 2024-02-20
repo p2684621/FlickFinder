@@ -18,7 +18,7 @@ const PrivateRoutes = () => {
 const Routes = () => {
     return (
         <Router>
-            <Route path='/login' element={<Login />} />
+            {/* <Route path='/login' element={<Login />} /> */}
             <Route path='/' element={<Home />} />
             <Route path='/recommendation' element={<RecommendationPage />} />
             <Route path="/movie/:movieId/:title" element={<MovieDetailsPage />} />

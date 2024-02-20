@@ -102,3 +102,16 @@ button:focus-visible {
 
 @import url('https://fonts.googleapis.com/css2?family=Elsie');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500&display=swap');
+
+.mobile-ui{
+  .mobile-head{
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 35px;
+  }
+  .message{
+    margin: 1rem 0;
+    opacity: 0.7;
+  }
+}

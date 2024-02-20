@@ -127,7 +127,7 @@ function RecommendationPage() {
         </div>
         <div className="popular-movies">
           <h1 className="header">Movies based on Selected Genre</h1>
-          {isLoadingGenreBasedMovies ? <Loader /> : renderMovieWidgets(genreBasedMovies)}
+          {isLoadingGenreBasedMovies ? <Loader /> : genreBasedMovies.length > 0 ? renderMovieWidgets(genreBasedMovies) : <p>No Selected genre</p>}
         </div>
         <div className="popular-movies">
           <h1 className="header">Suggested Movies</h1>
